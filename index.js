@@ -6,7 +6,7 @@ try {
 
 var Permatime = function (parts) {
   //root, zone, date, time, timestamp
-  this.root = parts.root || "/";
+  this.root = parts.root || "http://permatime.com/";
   this.zone = parts.zone || null;
   this.date = parts.date || null;
   this.time = parts.time || null;
@@ -14,7 +14,6 @@ var Permatime = function (parts) {
   this.label = parts.label || null;
   this.link = parts.link || null;
 };
-
 Permatime.prototype.moment = function(){
   if (!moment){throw "moment/moment-timezone is not installed";}
   if(this.timestamp) {
@@ -22,6 +21,29 @@ Permatime.prototype.moment = function(){
   } else {
     return moment.tz(this.date + " "+ this.time, this.zone);
   }
+};
+Permatime.prototype.toZone = function(newZone){
+  if (!moment){throw "moment/moment-timezone is not installed";}
+  if (this.zone === newZone){
+    return this;
+  }
+  var m = this.moment().tz(newZone);
+  return new Permatime({root: this.root, zone: newZone, date: m.format("YYYY-MM-DD"), time: m.format("HH:mm")});
+};
+Permatime.prototype.url = function(){
+  var url = this.root;
+  if(this.timestamp) {
+    url += "timestamp/"+this.timestamp ;
+  } else {
+    url += this.zone+"/"+this.date+"/"+this.time;
+  }
+  if (this.label) {
+    url += "/" + this.label;
+  }
+  if (this.link) {
+    url += "?link=" + this.link;
+  }
+  return url;
 };
 
 var root = "^(https?://[^/]+/|/)?";

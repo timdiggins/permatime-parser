@@ -32,20 +32,33 @@ p.zone; // Europe/London
 p.date; // 2012-07-27
 p.time; // 12:00
 p.label; // Opening_Ceremony
-
-p.moment(); // a moment instance*
 ```
-
-*Permatime.moment() raises an error unless you have moment.js and moment timezone (optional dependencies) installed.
 
 ### Construction
 
 ```
 var Permatime = require('permatime-parser').Permatime;
 var p = new Permatime({zone: 'Europe/London", date: "2012-07-27", time: "12:00"});
-p.url(); // "http://permatime.com/Europe/London/2012-07-27/12:00"
 ```
 
+### Use
+
+```
+// assume p is a permatime parsed or constructed as above, e.g.
+var p = new Permatime({zone: 'Europe/London", date: "2012-07-27", time: "12:00"});
+
+p.url(); // "http://permatime.com/Europe/London/2012-07-27/12:00"
+
+p.moment(); // *a moment instance
+p.toZone("Europe/London"); // *the same permatime
+
+var p2 = p.toZone("Europe/Paris"); // *a new permatime
+p2.url(); // "http://permatime.com/Europe/Paris/2012-07-27/13:00"
+
+```
+
+*Permatime.moment() and toZone() raise an error unless you have moment.js and moment timezone (optional dependencies) 
+installed.
 
 ## Permatime URL reference
 

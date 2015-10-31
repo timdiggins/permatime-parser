@@ -4,7 +4,12 @@ var permatime = proxyquire('../index', { 'moment-timezone': null});
 
 test('when no moment, permatime moment() raises error', function (t) {
   var p = new permatime.Permatime({timestamp: "12345"});
-  t.throws(function(){p.moment()});
+  t.throws(function(){p.moment();});
+  t.end();
+});
+test('when no moment, permatime toZone() raises error', function(t){
+  var p = new permatime.Permatime({timestamp: "12345"});
+  t.throws(function(){p.toZone("US/Eastern");});
   t.end();
 });
 

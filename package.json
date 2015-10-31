@@ -4,7 +4,8 @@
   "description": "a javascript parser for permatimes from permatime.com",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/**/*.js | ./node_modules/.bin/tap-spec"
+    "test": "tape test/**/*.js | ./node_modules/.bin/tap-spec && npm run jshint",
+    "jshint": "./node_modules/.bin/jshint index.js test "
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,23 @@
   },
   "homepage": "https://github.com/timdiggins/permatime-parser#readme",
   "devDependencies": {
+    "jshint": "^2.8.0",
     "moment": "^2.10.6",
     "moment-timezone": "^0.4.1",
     "proxyquire": "^1.7.3",
     "tap-spec": "^4.1.0",
     "tape": "^4.2.2"
+  },
+  "jsHintConfig": {
+    "browserify":true,
+    "noempty":true,
+    "noarg":true,
+    "eqeqeq":true,
+    "browser":true,
+    "bitwise":true,
+    "curly":true,
+    "undef":true,
+    "nonew":true,
+    "forin":true
   }
 }

@@ -23,13 +23,12 @@ test('minimal datetime without host', function (t) {
 
 test('minimal datetime with bare root', function (t) {
   var permatime = parse("Europe/Berlin/1989-11-09/00:01");
-  t.equal(permatime.root, "/");
   t.equal(permatime.zone, "Europe/Berlin");
   t.end();
 });
 
 test('minimal timestamp', function (t) {
-  var permatime = parse("timestamp/1226183760");
+  var permatime = parse("/timestamp/1226183760");
   t.equal(permatime.root, "/");
   t.equal(permatime.zone, null);
   t.equal(permatime.date, null);
