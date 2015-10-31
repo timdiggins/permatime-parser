@@ -20,7 +20,10 @@ See http://www.permatime.com
 
 ## Library usage
 
-Parsing
+Optional dependency: to convert permatime URLs to timezone-aware moment instances, you need moment.js and
+moment-timezone installed. See http://momentjs.com/
+
+### Parsing
 
 ```
 var parse = require('permatime-parser').parse;
@@ -30,12 +33,12 @@ p.date; // 2012-07-27
 p.time; // 12:00
 p.label; // Opening_Ceremony
 
-p.moment(); // a moment instance
+p.moment(); // a moment instance*
 ```
 
-* moment() is defined on Permatimes only if you have moment.js and moment timezone (optional dependencies) installed. See http://momentjs.com/
+*Permatime.moment() raises an error unless you have moment.js and moment timezone (optional dependencies) installed.
 
-Construction
+### Construction
 
 ```
 var Permatime = require('permatime-parser').Permatime;
@@ -68,9 +71,9 @@ Full url:
 http://permatime.com/timestamp/1226183760/My_Label
 
 ## Development
-   
+
    you need git, npm etc.
-   
+
    ```
    git clone ...
    npm install

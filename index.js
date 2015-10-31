@@ -1,3 +1,9 @@
+try {
+  var moment = require('moment-timezone');
+} catch(e){
+  var moment = null;
+}
+
 var Permatime = function (parts) {
   //root, zone, date, time, timestamp
   this.root = parts.root || "/";
@@ -7,6 +13,15 @@ var Permatime = function (parts) {
   this.timestamp = parts.timestamp || null;
   this.label = parts.label || null;
   this.link = parts.link || null;
+};
+
+Permatime.prototype.moment = function(){
+  if (!moment){throw "moment/moment-timezone is not installed";}
+  if(this.timestamp) {
+    return moment.unix(parseInt(this.timestamp));
+  } else {
+    return moment.tz(this.date + " "+ this.time, this.zone);
+  }
 };
 
 var root = "^(https?://[^/]+/|/)?";
