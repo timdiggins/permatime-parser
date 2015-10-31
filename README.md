@@ -18,7 +18,33 @@ http://permatime.com/US/Central/1963-11-22/12:30/Assassination_of_JFK
 See http://www.permatime.com
 
 
-## Construction
+## Library usage
+
+Parsing
+
+```
+var parse = require('permatime-parser').parse;
+var p = parse("http://permatime.com/Europe/London/2012-07-27/12:00/Opening_Ceremony"):
+p.zone; // Europe/London
+p.date; // 2012-07-27
+p.time; // 12:00
+p.label; // Opening_Ceremony
+
+p.moment(); // a moment instance
+```
+
+* moment() is defined on Permatimes only if you have moment.js and moment timezone (optional dependencies) installed. See http://momentjs.com/
+
+Construction
+
+```
+var Permatime = require('permatime-parser').Permatime;
+var p = new Permatime({zone: 'Europe/London", date: "2012-07-27", time: "12:00"});
+p.url(); // "http://permatime.com/Europe/London/2012-07-27/12:00"
+```
+
+
+## Permatime URL reference
 
 Constructing Permatime URLs from your own application or even by hand is easy. They have five parts:
 
