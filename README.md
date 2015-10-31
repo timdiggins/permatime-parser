@@ -43,17 +43,14 @@ http://permatime.com/timestamp/1226183760/My_Label
 
 ## Development
    
-   you need git, npm, node etc.
+   you need git, npm etc.
    
    ```
    git clone ...
    npm install
-   bower install
-   npm start
+   npm test
    ```
    
-   edit the src, and npm should magically make the static stuff. Being lazy, I'm just checking that into the repo for 
-   now, as it means a no-build deploy.
 
 
 

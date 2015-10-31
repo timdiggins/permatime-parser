@@ -1,0 +1,23 @@
+{
+  "name": "permatime-parser",
+  "version": "0.0.1",
+  "description": "a javascript parser for permatimes from permatime.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.js | ./node_modules/.bin/tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timdiggins/permatime-parser.git"
+  },
+  "author": "Tim Diggins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timdiggins/permatime-parser/issues"
+  },
+  "homepage": "https://github.com/timdiggins/permatime-parser#readme",
+  "devDependencies": {
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
+  }
+}
